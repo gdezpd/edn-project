@@ -1,0 +1,23 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 3px;
+}
+
+.checkbox {
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    padding: 0 10px;
+    width: 222px;
+    text-align: justify ;
+}
+
+.button {
+    align-items: center;
+    justify-content: center;
+}
