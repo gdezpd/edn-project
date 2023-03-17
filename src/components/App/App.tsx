@@ -1,7 +1,7 @@
-import React, {useCallback, useState} from 'react'
+import React, {useCallback} from 'react'
 import './App.css';
-import {TaskType, Todolist} from './Todolist';
-import {AddItemForm} from './AddItemForm';
+import {TaskType, Todolist} from '../Todolist/Todolist';
+import {AddItemForm} from '../../features/AddItemForm/AddItemForm';
 
 import {Col, Layout, Menu, Row, theme} from 'antd';
 
@@ -10,10 +10,10 @@ import {
     changeTodolistFilterAC,
     changeTodolistTitleAC,
     removeTodolistAC
-} from './state/todolists-reducer';
-import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from './state/tasks-reducer';
+} from '../../store/todolists-reducer';
+import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from '../../store/tasks-reducer';
 import {useDispatch, useSelector} from 'react-redux';
-import {AppRootStateType} from './state/store';
+import {AppRootStateType} from '../../store/store';
 
 
 export type FilterValuesType = 'all' | 'active' | 'completed';
@@ -41,12 +41,12 @@ function App() {
     const removeTask = useCallback(function (id: string, todolistId: string) {
         const action = removeTaskAC(id, todolistId);
         dispatch(action);
-    }, []);
+    }, [dispatch]);
 
     const addTask = useCallback(function (title: string, todolistId: string) {
         const action = addTaskAC(title, todolistId);
         dispatch(action);
-    }, []);
+    }, [dispatch]);
 
     const changeStatus = useCallback(function (id: string, isDone: boolean, todolistId: string) {
         const action = changeTaskStatusAC(id, isDone, todolistId);
@@ -142,16 +142,6 @@ function App() {
             </Layout>
         </div>
     )
-}
-
-export const LayoutAntDes = () => {
-
-
-    return (
-        <>
-
-        </>
-    );
 }
 
 export default App;

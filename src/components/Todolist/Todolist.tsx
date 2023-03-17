@@ -1,8 +1,8 @@
 import React, {useCallback} from 'react'
-import {AddItemForm} from './AddItemForm'
-import {EditableSpan} from './EditableSpan'
-import {Task} from './Task'
-import {FilterValuesType} from './App';
+import {AddItemForm} from '../../features/AddItemForm/AddItemForm'
+import {EditableSpan} from '../../features/EditableSpan/EditableSpan'
+import {Task} from '../Task/Task'
+import {FilterValuesType} from '../App/App';
 import {Button, Card, Space} from "antd";
 import {DeleteOutlined} from "@ant-design/icons";
 

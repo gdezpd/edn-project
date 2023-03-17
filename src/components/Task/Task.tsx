@@ -1,14 +1,11 @@
 import React, {useCallback} from 'react'
-import {EditableSpan} from './EditableSpan'
-import {TaskType} from './Todolist'
+import {EditableSpan} from '../../features/EditableSpan/EditableSpan'
+import {TaskType} from '../Todolist/Todolist'
 import {Button, Checkbox} from "antd";
 import {DeleteOutlined} from "@ant-design/icons";
 import {CheckboxChangeEvent} from "antd/es/checkbox";
 
 import s from './task.module.css'
-import {useSelector} from "react-redux";
-import {AppRootStateType} from "./state/store";
-import {TodolistType} from "./App";
 
 type TaskPropsType = {
     task: TaskType
