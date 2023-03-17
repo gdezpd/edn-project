@@ -38,7 +38,7 @@ export const AddItemForm = React.memo(function (props: AddItemFormPropsType) {
     return <div className={s.wrapper}>
         <Input 
             status={error}
-            placeholder={error === "" ? "Title" : "Error"}
+            placeholder={error === "" ? "Title" : "Write a note"}
             value={title}
             onChange={onChangeHandler}
             onKeyPress={onKeyPressHandler}

@@ -1,9 +1,13 @@
-.wrapper {
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 3px;
+}
+.wrapper{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    margin: 3px;
 }
 
 .checkbox {
@@ -13,11 +17,14 @@
 
 .text {
     padding: 0 10px;
-    width: 222px;
+    width: 246px;
     text-align: justify ;
 }
 
 .button {
     align-items: center;
     justify-content: center;
+}
+.time{
+    opacity: 0.5;
 }

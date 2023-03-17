@@ -1,11 +1,14 @@
-import React, { useCallback } from 'react'
-import { EditableSpan } from './EditableSpan'
-import { TaskType } from './Todolist'
+import React, {useCallback} from 'react'
+import {EditableSpan} from './EditableSpan'
+import {TaskType} from './Todolist'
 import {Button, Checkbox} from "antd";
 import {DeleteOutlined} from "@ant-design/icons";
 import {CheckboxChangeEvent} from "antd/es/checkbox";
 
 import s from './task.module.css'
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "./state/store";
+import {TodolistType} from "./App";
 
 type TaskPropsType = {
     task: TaskType
@@ -18,9 +21,10 @@ export const Task = React.memo(({
                                     task,
                                     todolistId,
                                     changeTaskStatus,
-    changeTaskTitle,
-    removeTask
+                                    changeTaskTitle,
+                                    removeTask
                                 }: TaskPropsType) => {
+
     const onClickHandler = useCallback(() => removeTask(task.id, todolistId), [task.id, todolistId]);
 
     const onChangeHandler = useCallback((e: CheckboxChangeEvent) => {
@@ -32,11 +36,16 @@ export const Task = React.memo(({
         changeTaskTitle(task.id, newValue, todolistId)
     }, [task.id, todolistId]);
 
-    return <div key={task.id} className={s.wrapper}>
 
-        <Checkbox checked={task.isDone} onChange={onChangeHandler} className={s.checkbox}/>
+    return <div key={task.id} className={s.container}>
 
-        <span className={s.text}><EditableSpan value={task.title} onChange={onTitleChangeHandler}/></span>
-        <Button danger icon={<DeleteOutlined/>} onClick={onClickHandler} className={s.button}/>
+        <div className={s.wrapper}>
+            <Checkbox checked={task.isDone} onChange={onChangeHandler} className={s.checkbox}/>
+            <span className={s.text}><EditableSpan value={task.title} onChange={onTitleChangeHandler}/></span>
+            <Button danger icon={<DeleteOutlined/>} onClick={onClickHandler} className={s.button}/>
+        </div>
+        <span className={s.time}>
+            created {task.timeHours}:{task.timeMinutes}
+        </span>
     </div>
 })

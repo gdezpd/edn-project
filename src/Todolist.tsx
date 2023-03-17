@@ -10,6 +10,8 @@ export type TaskType = {
     id: string
     title: string
     isDone: boolean
+    timeHours: number,
+    timeMinutes: number
 }
 
 type PropsType = {
@@ -68,17 +70,21 @@ export const Todolist = React.memo(function (
 
     return <div>
         <Space direction="vertical" size="middle" style={{display: 'flex', margin: '10px'}}>
-            <Card title={<EditableSpan value={title} onChange={changeTodolistTitleHandler}/>}
+            <Card title={
+                <EditableSpan value={title} onChange={changeTodolistTitleHandler}/>
+            }
                   extra={<Button icon={<DeleteOutlined/>} onClick={removeTodolistHandler}/>}
                   size="default">
                 <AddItemForm addItem={addTodo}/>
                 <div>
                     {
-                        tasksForTodolist.map(t => <Task key={t.id} task={t} todolistId={id}
-                                                        removeTask={removeTask}
-                                                        changeTaskTitle={changeTaskTitle}
-                                                        changeTaskStatus={changeTaskStatus}
-                        />)
+                        tasksForTodolist.map(t =>
+                            <Task key={t.id} task={t} todolistId={id}
+                                  removeTask={removeTask}
+                                  changeTaskTitle={changeTaskTitle}
+                                  changeTaskStatus={changeTaskStatus}
+                            />
+                        )
                     }
                 </div>
                 <div style={{paddingTop: '10px'}}>

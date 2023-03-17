@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react'
+import React, {useCallback, useState} from 'react'
 import './App.css';
 import {TaskType, Todolist} from './Todolist';
 import {AddItemForm} from './AddItemForm';
@@ -116,7 +116,6 @@ function App() {
                         <Row>
                             {
                                 todolists.map(tl => {
-
                                     let allTodolistTasks = tasks[tl.id];
 
                                     return <Col span={6} key={tl.id}>
