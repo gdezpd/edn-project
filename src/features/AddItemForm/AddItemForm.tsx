@@ -1,48 +1,53 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
-import Input from 'antd/es/input';
-import {Button} from "antd";
-import {PlusCircleOutlined} from "@ant-design/icons";
+import React, { ChangeEvent, KeyboardEvent, useState } from 'react'
+import Input from 'antd/es/input'
+import { Button } from 'antd'
+import { PlusCircleOutlined } from '@ant-design/icons'
 import s from './addItemForm.module.css'
 
 type AddItemFormPropsType = {
-    addItem: (title: string) => void
+  addItem: (title: string) => void
 }
 
 export const AddItemForm = React.memo(function (props: AddItemFormPropsType) {
+  let [title, setTitle] = useState('')
+  let [error, setError] = useState<'' | 'error' | 'warning' | undefined>('')
 
-    let [title, setTitle] = useState('')
-    let [error, setError] = useState<"" | "error" | "warning" | undefined>("")
-
-    const addItem = () => {
-        if (title.trim() !== '') {
-            props.addItem(title);
-            setTitle('');
-        } else {
-            setError("error");
-        }
+  const addItem = () => {
+    if (title.trim() !== '') {
+      props.addItem(title)
+      setTitle('')
+    } else {
+      setError('error')
     }
+  }
 
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.currentTarget.value)
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.currentTarget.value)
+  }
+
+  const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (error !== '') {
+      setError('')
     }
-
-    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (error !== "") {
-            setError("");
-        }
-        if (e.key === 'Enter') {
-            addItem();
-        }
+    if (e.key === 'Enter') {
+      addItem()
     }
+  }
 
-    return <div className={s.wrapper}>
-        <Input 
-            status={error}
-            placeholder={error === "" ? "Title" : "Write a note"}
-            value={title}
-            onChange={onChangeHandler}
-            onKeyPress={onKeyPressHandler}
-        />
-        <Button icon={<PlusCircleOutlined />} onClick={addItem} style={{marginLeft: '5px'}}/>
+  return (
+    <div className={s.wrapper}>
+      <Input
+        status={error}
+        placeholder={error === '' ? 'Title' : 'Write a note'}
+        value={title}
+        onChange={onChangeHandler}
+        onKeyPress={onKeyPressHandler}
+      />
+      <Button
+        icon={<PlusCircleOutlined />}
+        onClick={addItem}
+        style={{ marginLeft: '5px' }}
+      />
     </div>
+  )
 })
