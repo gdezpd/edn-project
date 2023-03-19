@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/edn-project/static/css/main.93d9ffc6.css",
+    "main.js": "/edn-project/static/js/main.b57ab82c.js",
+    "index.html": "/edn-project/index.html",
+    "main.93d9ffc6.css.map": "/edn-project/static/css/main.93d9ffc6.css.map",
+    "main.b57ab82c.js.map": "/edn-project/static/js/main.b57ab82c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.93d9ffc6.css",
+    "static/js/main.b57ab82c.js"
+  ]
+}
